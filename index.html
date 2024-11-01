@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-purple-500 to-pink-500">
+
+    <header class="flex flex-col items-center md:flex-row md:justify-around m-4">
+        <div class="buttContaner">
+            <button class="sortByTitle bg-purple-900 rounded-lg p-2 text-white">Sort by title</button>
+            <button class="sortByDate bg-purple-900 rounded-lg p-2 text-white">Sort by date</button>
+        </div>
+        <div class="search">
+            <input class="m-2 h-[30px] rounded-lg p-2" type="text">
+            <button>Search</button>
+        </div>
+        <div class="addItem">
+            <button class="ajouterTache bg-purple-900 rounded-lg p-2 text-white">Add item</button>
+        </div>
+    </header>
+
+    <main class="w-full md:w-11/12 flex flex-col gap-1 md:flex-row mr-auto ml-auto">
+        <div class="backlog overflow-scroll w-11/12 ml-auto rounded-lg h-96 mr-auto text-white b-2">
+            <div class="title w-full p-2 text-center bg-fuchsia-800">Backlog</div>
+            <div id="taskUn" class="tasks1 m-2">
+                <div class="tache bg-purple-800 p-2 m-1 rounded-lg">
+                    <div class="titleTime flex justify-between">
+                        <h2 class="taskTitle font-bold">dsdsds</h2>
+                        <p class="taskTime font-bold">25/05/2024</p>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id neque nihil voluptates itaque aliquid nemo autem eius ullam, mollitia cumque cupiditate unde vel exercitationem! Dolorum nostrum eos illum quia pariatur!
+                    </p>
+                    <div class="editDel w-fit ml-auto mr-auto">
+                        <button class="editButton bg-green-900 rounded-lg p-2 text-white">Edit</button>
+                        <button class="deleteButton bg-red-900 rounded-lg p-2 text-white">Delete</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="inProgress rounded-lg overflow-scroll w-11/12 ml-auto h-96 mr-auto text-white b-2">
+            <div class="title w-full p-2 text-center bg-fuchsia-900">In Progress</div>
+            <div id="taskDeux" class="task2 m-2">
+
+                
+                
+
+            </div>
+        </div>
+        <div class="done rounded-lg overflow-scroll w-11/12 ml-auto h-96 mr-auto text-white b-2">
+            <div class="title w-full p-2 text-center bg-fuchsia-950">Done</div>
+            <div id="taskTrois" class="task3 m-2"></div>
+        </div>
+
+    </main>
+
+    <div id="addItem" class="addItem hidden absolute top-40 left-0 right-0 m-auto p-10 bg-fuchsia-900 w-[360px] md:w-[600px] sm:w-10/12 h-90 rounded-lg p-2">
+        <form action="">
+        <h2 class="text-center text-white text-2xl">Add An Item :</h2>
+        <label for="titreTache">Title : <input class="md:w-6/12 block rounded-lg" id="titreTache" type="text"></label>
+        <label for="description">Description :<textarea class="block rounded-lg md:w-6/12" id="description"></textarea></label>
+        <label for="date">Date :<input required class="block rounded-lg p-1" id="date" type="date"/></label>
+        <label class="" for="">Status
+            <select id="statut" class="block p-1 rounded-lg" name="" id="">
+                <option value="backlog">Backlog</option>
+                <option value="inProgress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+        </label>
+        <label for="">
+            Priority 
+            <select name="" id="prio" class="block p-1 rounded-lg">
+                <option name="" value="p1" id="">Priority 1</option>
+                <option name="" value="p2" id="">Priority 2</option>
+                <option name="" value="p3" id="">Priority 3</option>
+            </select>
+        </label>
+        <div class="w-fit ml-auto mr-auto">
+            <button id="saveAdd" class="bg-green-900 rounded-lg p-2 text-white">Save</button>
+            <button id="cancelAdd" class="bg-red-900 rounded-lg p-2 text-white">Cancel</button>
+        </div>
+        </form>
+    </div>
+
+    <div class="editTask hidden absolute top-40 left-0 right-0 m-auto p-10 bg-rose-900 w-[360px] md:w-[600px] sm:w-10/12 h-80 rounded-lg p-2">
+        <form action="">
+            <h2 class="text-center text-white text-2xl">Edit An Item :</h2>
+            <label for="titreTache">Title : <input class="md:w-6/12 block rounded-lg" id="titreTache" type="text"></label>
+            <label for="description">Description :<textarea class="block rounded-lg md:w-6/12" id="description"></textarea></label>
+            <label for="date">Date :<input required class="block rounded-lg p-1" id="date" type="date"/></label>
+            <label class="" for="">Priority
+                <select class="block p-1 rounded-lg" name="" id="">
+                    <option value="priority1">Priority 1</option>
+                    <option value="priority2">Priority 2</option>
+                    <option value="priority3">Priority 3</option>
+                </select>
+            </label>
+            <div class="w-fit ml-auto mr-auto">
+                <button class="bg-green-900 rounded-lg p-2 text-white">Save</button>
+                <button class="bg-red-900 rounded-lg p-2 text-white">Cancel</button>
+            </div>
+            </form>
+    </div>
+    
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
