@@ -250,6 +250,76 @@ saveAdd.addEventListener("click", (e) =>{
 
     })
 
+    //sort Elements button
+    const sortByTitle = document.getElementById("sortByTitre");
+    sortByTitle.addEventListener("click", () =>{
+        const backLogSort = document.getElementById("taskUn");
+        const inProgressSort = document.getElementById("taskDeux");
+        const doneSort = document.getElementById("taskTrois");
+
+        //le tri pour le backlog
+        const backLogSortList = backLogSort.querySelectorAll(".tache");
+        const backLogSortTitleList = Array.from(backLogSortList).map(el =>{
+            const backlogTitle = el.querySelector("#taskAddedTitle");
+            return backlogTitle.innerText;
+        });
+        backLogSortTitleList.sort();
+        
+        let elm = "";
+        let elmARechercher = "";
+        for(let i = 0; i < backLogSortTitleList.length; i++){
+            // elm = backLogSortList[i].querySelector("#taskAddedTitle").innerText;
+            elm = backLogSortTitleList[i]
+            for(let j = 0; j < backLogSortTitleList.length; j++){
+                elmARechercher = backLogSortList[j].querySelector("#taskAddedTitle").innerText;
+                if(elm == elmARechercher){
+                    backLogSort.appendChild(backLogSortList[j]);
+                }
+            }
+        }
+
+        //le tri pour le In Progress
+        const inProgressSortList = inProgressSort.querySelectorAll(".tache");
+        const inProgressSortTitleList = Array.from(inProgressSortList).map(el =>{
+            const inProgressTitle = el.querySelector("#taskAddedTitle");
+            return inProgressTitle.textContent;
+        });
+        inProgressSortTitleList.sort();
+        let elmInProgress = "";
+        let elmARechercherInProgress = "";
+        for(let i = 0; i < inProgressSortTitleList.length; i++){
+            elmInProgress = inProgressSortTitleList[i];
+            for(let j = 0; j < inProgressSortTitleList.length; j++){
+                elmARechercherInProgress = inProgressSortList[j].querySelector("#taskAddedTitle").innerText;
+                if(elmARechercherInProgress == elmInProgress){
+                    inProgressSort.appendChild(inProgressSortList[j])
+                }
+            }
+        }
+
+        //le tri pour le Done
+        const doneSortList = doneSort.querySelectorAll(".tache");
+        const doneSortTitleList = Array.from(doneSortList).map(el =>{
+            const doneTitle = el.querySelector("#taskAddedTitle");
+            return doneTitle.innerText;
+        });
+        doneSortTitleList.sort();
+        let elmDone = "";
+        let elmARechercherDone = "";
+        for(let i = 0; i < doneSortTitleList.length; i++ ){
+            elmDone = doneSortTitleList[i];
+            for(let j = 0; j < doneSortTitleList.length; j++){
+                elmARechercherDone = doneSortList[j].querySelector("#taskAddedTitle").innerText;
+                if(elmARechercherDone == elmDone){
+                    doneSort.appendChild(doneSortList[j]); 
+                }
+            }
+        }
+
+        
+        
+    });
+
    
 
 
