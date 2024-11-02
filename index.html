@@ -14,8 +14,8 @@
             <button class="sortByDate bg-purple-900 rounded-lg p-2 text-white">Sort by date</button>
         </div>
         <div class="search">
-            <input class="m-2 h-[30px] rounded-lg p-2" type="text">
-            <button>Search</button>
+            <input id="searchInput" class="m-2 h-[30px] rounded-lg p-2" type="text">
+            <button id="searchButton">Search</button>
         </div>
         <div class="addItem">
             <button class="ajouterTache bg-purple-900 rounded-lg p-2 text-white">Add item</button>
@@ -26,19 +26,7 @@
         <div class="backlog overflow-scroll w-11/12 ml-auto rounded-lg h-96 mr-auto text-white b-2">
             <div class="title w-full p-2 text-center bg-fuchsia-800">Backlog</div>
             <div id="taskUn" class="tasks1 m-2">
-                <div class="tache bg-purple-800 p-2 m-1 rounded-lg">
-                    <div class="titleTime flex justify-between">
-                        <h2 class="taskTitle font-bold">dsdsds</h2>
-                        <p class="taskTime font-bold">25/05/2024</p>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id neque nihil voluptates itaque aliquid nemo autem eius ullam, mollitia cumque cupiditate unde vel exercitationem! Dolorum nostrum eos illum quia pariatur!
-                    </p>
-                    <div class="editDel w-fit ml-auto mr-auto">
-                        <button class="editButton bg-green-900 rounded-lg p-2 text-white">Edit</button>
-                        <button class="deleteButton bg-red-900 rounded-lg p-2 text-white">Delete</button>
-                    </div>
-                </div>
+                
                 
             </div>
         </div>
@@ -105,7 +93,8 @@
             </div>
             </form>
     </div>
-    <div class="searchTask hidden absolute text-white top-40 left-0 right-0 m-auto p-10 bg-rose-900 w-[360px] md:w-[600px] sm:w-10/12 h-80 rounded-lg p-2">
+
+    <div id="searchForm" class="searchTask hidden absolute text-white top-40 left-0 right-0 m-auto p-10 bg-rose-900 w-[360px] md:w-[600px] sm:w-10/12 h-80 rounded-lg p-2">
         <div id="flex" class="w-fit mr-auto ml-auto mt-20">
             <p id="leTitre">dsddds</p>
             <p id="laDescription">aaaaa</p>

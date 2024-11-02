@@ -179,6 +179,77 @@ saveAdd.addEventListener("click", (e) =>{
     description.value = "";
     })
 
+    const searchInput = document.getElementById("searchInput");
+    const fermerSearch = document.getElementById("fermerSearch");
+    const searchButton = document.getElementById("searchButton");
+    
+    fermerSearch.addEventListener("click", () =>{
+        const searchForm = document.getElementById('searchForm');
+        searchForm.classList.add("hidden")
+    });
+    searchButton.addEventListener("click", () =>{
+        const valeurAChercher = searchInput.value;
+        const backLog = document.getElementById("taskUn");
+        const inProgress = document.getElementById("taskDeux");
+        const done = document.getElementById("taskTrois");
+
+        //recherche dans le div backlog
+        const backLogList = backLog.querySelectorAll(".tache");
+        const titleElem = Array.from(backLogList).filter(el =>{
+            const titreElement = el.querySelector("#taskAddedTitle");
+            return valeurAChercher == titreElement.innerText
+        })
+        if(titleElem.length == 1){
+            const leTitreCherche = titleElem[0].querySelector("#taskAddedTitle").innerText;
+            const lElelemntDesc = titleElem[0].querySelector("#descriptionAddedTask");
+            const searchFormTitre = document.getElementById("leTitre");
+            const searchFormDesc = document.getElementById("laDescription");
+            const searchForm = document.getElementById('searchForm');
+            searchForm.classList.remove("hidden");
+            searchFormTitre.innerText = leTitreCherche;
+            searchFormDesc.innerText = lElelemntDesc.innerText;
+            
+        }
+        //recherche dans le div in progress
+        const inProgressList = inProgress.querySelectorAll(".tache");
+        const titleInProgress = Array.from(inProgressList).filter(el =>{
+            const titreElementProgress = el.querySelector("#taskAddedTitle");
+            return valeurAChercher == titreElementProgress.innerText;
+        });
+        if(titleInProgress.length == 1){
+            const SearchTitleProgress = titleInProgress[0].querySelector("#taskAddedTitle").innerText;
+            const searchDescProgress = titleInProgress[0].querySelector("#descriptionAddedTask").innerText;
+
+            const searchFormTitre = document.getElementById("leTitre");
+            const searchFormDesc = document.getElementById("laDescription");
+            const searchForm = document.getElementById('searchForm');
+            searchForm.classList.remove("hidden");
+            searchFormTitre.innerText = SearchTitleProgress;
+            searchFormDesc.innerText = searchDescProgress;   
+        }
+
+       //recherche dans le div done
+       const doneList = done.querySelectorAll(".tache");
+       const titleDone = Array.from(doneList).filter(el => {
+            const titreElementDone = el.querySelector("#taskAddedTitle");
+            return valeurAChercher == titreElementDone.innerText;
+       });
+       if(titleDone.length == 1){
+            const searchTitleDone = titleDone[0].querySelector("#taskAddedTitle").innerText;
+            const searchDescDone = titleDone[0].querySelector("#descriptionAddedTask").innerText;
+
+            const searchFormTitre = document.getElementById("leTitre");
+            const searchFormDesc = document.getElementById("laDescription");
+            const searchForm = document.getElementById('searchForm');
+            searchForm.classList.remove("hidden");
+            searchFormTitre.innerText = searchTitleDone;
+            searchFormDesc.innerText = searchDescDone; 
+
+       }
+        
+
+    })
+
    
 
 
