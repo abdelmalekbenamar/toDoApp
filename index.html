@@ -86,24 +86,32 @@
         </form>
     </div>
 
-    <div class="editTask hidden absolute top-40 left-0 right-0 m-auto p-10 bg-rose-900 w-[360px] md:w-[600px] sm:w-10/12 h-80 rounded-lg p-2">
+    <div id="editTask" class="absolute hidden top-40 left-0 right-0 m-auto p-10 bg-rose-900 w-[360px] md:w-[600px] sm:w-10/12 h-80 rounded-lg p-2">
         <form action="">
             <h2 class="text-center text-white text-2xl">Edit An Item :</h2>
-            <label for="titreTache">Title : <input class="md:w-6/12 block rounded-lg" id="titreTache" type="text"></label>
-            <label for="description">Description :<textarea class="block rounded-lg md:w-6/12" id="description"></textarea></label>
-            <label for="date">Date :<input required class="block rounded-lg p-1" id="date" type="date"/></label>
+            <label for="titreTacheEdit">Title : <input class="md:w-6/12 block rounded-lg" id="titreTacheEdit" type="text"></label>
+            <label for="descriptionEdit">Description :<textarea class="block rounded-lg md:w-6/12" id="descriptionEdit"></textarea></label>
+            <label for="dateEdit">Date :<input required class="block rounded-lg p-1" id="dateEdit" type="date"/></label>
             <label class="" for="">Priority
-                <select class="block p-1 rounded-lg" name="" id="">
-                    <option value="priority1">Priority 1</option>
+                <select id="priorityEdit1" class="block p-1 rounded-lg" name="" id="">
+                    <option selected value="priority1">Priority 1</option>
                     <option value="priority2">Priority 2</option>
                     <option value="priority3">Priority 3</option>
                 </select>
             </label>
             <div class="w-fit ml-auto mr-auto">
-                <button class="bg-green-900 rounded-lg p-2 text-white">Save</button>
-                <button class="bg-red-900 rounded-lg p-2 text-white">Cancel</button>
+                <button id="saveEdit" class="bg-green-900 rounded-lg p-2 text-white">Save</button>
+                <button id="cancelEdit" class="bg-red-900 rounded-lg p-2 text-white">Cancel</button>
             </div>
             </form>
+    </div>
+    <div class="searchTask hidden absolute text-white top-40 left-0 right-0 m-auto p-10 bg-rose-900 w-[360px] md:w-[600px] sm:w-10/12 h-80 rounded-lg p-2">
+        <div id="flex" class="w-fit mr-auto ml-auto mt-20">
+            <p id="leTitre">dsddds</p>
+            <p id="laDescription">aaaaa</p>
+        </div>
+        <button id="fermerSearch" class="bg-yellow-600 p-1 rounded-lg block mr-auto ml-auto mt-[130px]">Fermer</button>
+
     </div>
     
     
