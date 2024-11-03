@@ -1,3 +1,4 @@
+
 const ajouterTache = document.querySelector(".ajouterTache");
 const sortTime = document.querySelector(".sortByDate");
 const sortTitle = document.querySelector(".sortByTitle");
@@ -65,6 +66,7 @@ saveAdd.addEventListener("click", (e) =>{
     let codeCard = document.createElement("div");
     codeCard.className = `${bg} tache p-2 m-1 rounded-lg`
     codeCard.id = now;
+    codeCard.draggable = true;
     codeCard.innerHTML = `
                     <div class="titleTime flex justify-between">
                         <h2 id="taskAddedTitle" class="taskTitle font-bold">${titreTache.value}</h2>
@@ -93,6 +95,22 @@ saveAdd.addEventListener("click", (e) =>{
     deleteButt.addEventListener("click", () =>{
         deleteButt.parentNode.parentNode.remove();
     })
+
+    //add dragstart dragand event to the task
+
+    const taskToDrag = document.getElementById(now);
+    taskToDrag.addEventListener("dragstart", () =>{
+        taskToDrag.classList.add("is-dragging"); 
+        taskToDrag.id = "isDragging";
+        console.log(taskToDrag.id)
+
+    });
+    
+    taskToDrag.addEventListener("dragend", () =>{
+        taskToDrag.classList.remove("is-dragging"); 
+        taskToDrag.removeAttribute("id");
+        console.log(taskToDrag.id)
+    });
     
     // create edit button event
   
@@ -109,9 +127,10 @@ saveAdd.addEventListener("click", (e) =>{
         const dateTaskEditDataNode = document.querySelector(`#${now} #taskAddedTimeId`);
         const prioTaskEdit = document.getElementById("priorityEdit1");
         const prioTaskEditDataNode = document.querySelector(`#${now}`);
+        const leIdDeLaTache = document.getElementById("idDeLaTache");
         const prioBg = [];
         
-
+        leIdDeLaTache.innerText = now
         dateTaskEdit.value = dateTaskEditDataNode.innerText
         descTaskEdit.value = descTaskEditDataNode.innerText;
         titleTaskEdit.value = titleTaskEditDataNode.innerText;
@@ -135,49 +154,100 @@ saveAdd.addEventListener("click", (e) =>{
         }
 
 
-        const saveEdit = document.getElementById("saveEdit");
-        saveEdit.addEventListener("click", (e) =>{
-            e.preventDefault();
-            const editNewTitle = document.getElementById("titreTacheEdit");
-            const editNewDesc = document.getElementById("descriptionEdit");
-            const editNewDate = document.getElementById("dateEdit");
-            const editNewPrio = document.getElementById("priorityEdit1");
+        // const saveEdit = document.getElementById("saveEdit");
+        // saveEdit.addEventListener("click", (e) =>{
+        //     e.preventDefault();
+        //     const editNewTitle = document.getElementById("titreTacheEdit");
+        //     const editNewDesc = document.getElementById("descriptionEdit");
+        //     const editNewDate = document.getElementById("dateEdit");
+        //     const editNewPrio = document.getElementById("priorityEdit1");
 
-            const taskToEdit = document.getElementById(`${now}`);
-            const titleToEdit = taskToEdit.querySelector("#taskAddedTitle");
-            const descToEdit = taskToEdit.querySelector("#descriptionAddedTask");
-            const dateToEdit = taskToEdit.querySelector("#taskAddedTimeId");
+        //     const taskToEdit = editButt.parentNode.parentNode;
+        //     const titleToEdit = taskToEdit.querySelector(`#taskAddedTitle`);
+        //     const descToEdit = taskToEdit.querySelector(`#descriptionAddedTask`);
+        //     const dateToEdit = taskToEdit.querySelector(`#taskAddedTimeId`);
+        //     let laClassListArray = taskToEdit.className;
+        //     laClassListArray = laClassListArray.split(" ");
+        //     laClassListArray.shift();
+        //     console.log(laClassListArray);
 
-            titleToEdit.innerText = editNewTitle.value;
-            descToEdit.innerText = editNewDesc.value;
-            dateToEdit.innerText = editNewDate.value;
-            switch(editNewPrio.value){
-                case "priority1":
-                    classListArray.unshift("bg-red-800");
-                    break;
-                case "priority2":
-                    classListArray.unshift("bg-orange-600");
-                    break;
-                case "priority3":
-                    classListArray.unshift("bg-lime-600");
-                    break;
 
-            }
-            let laClassChangeBg = classListArray.join(" ");
-            taskToEdit.className = laClassChangeBg;
-            document.getElementById("editTask").classList.add("hidden");
-            console.log(editNewPrio.value);
-        })
-        
+            
+        //     titleToEdit.innerText = editNewTitle.value;
+        //     descToEdit.innerText = editNewDesc.value;
+        //     dateToEdit.innerText = editNewDate.value;
+        //     switch(editNewPrio.value){
+        //         case "priority1":
+        //             laClassListArray.unshift("bg-red-800");
+        //             break;
+        //         case "priority2":
+        //             laClassListArray.unshift("bg-orange-600");
+        //             break;
+        //         case "priority3":
+        //             laClassListArray.unshift("bg-lime-600");
+        //             break;
+
+        //     }
+        //     let laClassChangeBg = laClassListArray.join(" ");
+        //     taskToEdit.className = laClassChangeBg;
+        //     document.getElementById("editTask").classList.add("hidden");
+           
+        // })  
         
     })
 
 
 
-    titreTache.value = "";
-    date.value = "";
-    description.value = "";
+        titreTache.value = "";
+        date.value = "";
+        description.value = "";
     })
+
+    const saveEdit = document.getElementById("saveEdit");
+    saveEdit.addEventListener("click", (e) =>{
+        e.preventDefault();
+        const editNewTitle = document.getElementById("titreTacheEdit");
+        const editNewDesc = document.getElementById("descriptionEdit");
+        const editNewDate = document.getElementById("dateEdit");
+        const editNewPrio = document.getElementById("priorityEdit1");
+        const leIdTache = document.getElementById("idDeLaTache").innerText;
+
+        const taskToEdit = document.getElementById(leIdTache);
+        const titleToEdit = taskToEdit.querySelector(`#taskAddedTitle`);
+        const descToEdit = taskToEdit.querySelector(`#descriptionAddedTask`);
+        const dateToEdit = taskToEdit.querySelector(`#taskAddedTimeId`);
+        let laClassListArray = taskToEdit.className;
+        laClassListArray = laClassListArray.split(" ");
+        laClassListArray.shift();
+        console.log(laClassListArray);
+
+
+        
+        titleToEdit.innerText = editNewTitle.value;
+        descToEdit.innerText = editNewDesc.value;
+        dateToEdit.innerText = editNewDate.value;
+        switch(editNewPrio.value){
+            case "priority1":
+                laClassListArray.unshift("bg-red-800");
+                break;
+            case "priority2":
+                laClassListArray.unshift("bg-orange-600");
+                break;
+            case "priority3":
+                laClassListArray.unshift("bg-lime-600");
+                break;
+
+        }
+        let laClassChangeBg = laClassListArray.join(" ");
+        taskToEdit.className = laClassChangeBg;
+        document.getElementById("editTask").classList.add("hidden");
+       
+    }) 
+
+
+
+
+    
 
     const searchInput = document.getElementById("searchInput");
     const fermerSearch = document.getElementById("fermerSearch");
@@ -319,6 +389,25 @@ saveAdd.addEventListener("click", (e) =>{
         
         
     });
+
+    prio1Task.addEventListener("dragover", (e) =>{
+        e.preventDefault();
+        const curTask1 = document.getElementById("isDragging");
+        console.log(curTask1)
+        prio1Task.appendChild(curTask1);
+    });
+
+    prio2Task.addEventListener("dragover", (e) =>{
+        e.preventDefault();
+        const curTask2 = document.getElementById("isDragging");
+        prio2Task.appendChild(curTask2);
+    })
+
+    prio3Task.addEventListener("dragover", (e) =>{
+        e.preventDefault();
+        const curTask3 = document.getElementById("isDragging");
+        prio3Task.appendChild(curTask3);
+    })
 
    
 
