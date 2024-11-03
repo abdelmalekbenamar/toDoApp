@@ -109,6 +109,7 @@ saveAdd.addEventListener("click", (e) =>{
     taskToDrag.addEventListener("dragend", () =>{
         taskToDrag.classList.remove("is-dragging"); 
         taskToDrag.removeAttribute("id");
+        taskToDrag.id = now;
         console.log(taskToDrag.id)
     });
     
@@ -152,47 +153,7 @@ saveAdd.addEventListener("click", (e) =>{
             prioTaskEdit.value = "priority3";
             break;
         }
-
-
-        // const saveEdit = document.getElementById("saveEdit");
-        // saveEdit.addEventListener("click", (e) =>{
-        //     e.preventDefault();
-        //     const editNewTitle = document.getElementById("titreTacheEdit");
-        //     const editNewDesc = document.getElementById("descriptionEdit");
-        //     const editNewDate = document.getElementById("dateEdit");
-        //     const editNewPrio = document.getElementById("priorityEdit1");
-
-        //     const taskToEdit = editButt.parentNode.parentNode;
-        //     const titleToEdit = taskToEdit.querySelector(`#taskAddedTitle`);
-        //     const descToEdit = taskToEdit.querySelector(`#descriptionAddedTask`);
-        //     const dateToEdit = taskToEdit.querySelector(`#taskAddedTimeId`);
-        //     let laClassListArray = taskToEdit.className;
-        //     laClassListArray = laClassListArray.split(" ");
-        //     laClassListArray.shift();
-        //     console.log(laClassListArray);
-
-
-            
-        //     titleToEdit.innerText = editNewTitle.value;
-        //     descToEdit.innerText = editNewDesc.value;
-        //     dateToEdit.innerText = editNewDate.value;
-        //     switch(editNewPrio.value){
-        //         case "priority1":
-        //             laClassListArray.unshift("bg-red-800");
-        //             break;
-        //         case "priority2":
-        //             laClassListArray.unshift("bg-orange-600");
-        //             break;
-        //         case "priority3":
-        //             laClassListArray.unshift("bg-lime-600");
-        //             break;
-
-        //     }
-        //     let laClassChangeBg = laClassListArray.join(" ");
-        //     taskToEdit.className = laClassChangeBg;
-        //     document.getElementById("editTask").classList.add("hidden");
-           
-        // })  
+ 
         
     })
 
